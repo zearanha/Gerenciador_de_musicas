@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 
 public class Playlist {
-    private String nome;
-    private ArrayList<Musica> musicas;
+    private final String nome;
+    private final ArrayList<Musica> musicas;
 
     public Playlist(String n){
         this.nome = n;
