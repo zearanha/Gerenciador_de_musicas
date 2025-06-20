@@ -1,4 +1,6 @@
-public class Artista {
+import java.io.Serializable;
+
+public class Artista implements Serializable {
     private String nome;
 
     public Artista(String n){
@@ -11,5 +13,11 @@ public class Artista {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+    @Override
+    public String toString() {
+        return "Artista{" +
+                "nome='" + nome + '\'' +
+                '}';
     }
 }

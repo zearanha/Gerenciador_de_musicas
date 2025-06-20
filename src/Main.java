@@ -1,27 +1,23 @@
 public class Main {
     public static void main(String[] args) {
-        Artista artista1 = new Artista("Queen");
-        Artista artista2 = new Artista("The Beatles");
+        PlaylistManager manager = new PlaylistManager();
+        manager.listarPlaylistsSalvas();
 
-        Album album1 = new Album("A Night at the Opera");
-        Album album2 = new Album("Abbey Road");
+        Artista queen = new Artista("Queen");
+        Artista beatles = new Artista("The Beatles");
 
-        Musica musica1 = new Musica("Bohemian Rhapsody", artista1, album1, "Rock", 1975, 5.55);
-        Musica musica2 = new Musica("Here Comes The Sun", artista2, album2, "Rock", 1969, 3.05);
-        Musica musica3 = new Musica("Let It Be", artista2, new Album("Let It Be"), "Rock", 1970, 4.03);
+        Musica m1 = new Musica("Bohemian Rhapsody", queen, new Album("A Night at the Opera"), "Rock", 1975, 5.55);
+        Musica m2 = new Musica("Here Comes The Sun", beatles, new Album("Abbey Road"), "Rock", 1969, 3.05);
+        Musica m3 = new Musica("Let It Be", beatles, new Album("Let It Be"), "Rock", 1970, 4.03);
 
-        Playlist minhaPlaylist = new Playlist("Clássicos do Rock");
+        Playlist rock = new Playlist("Classicos do Rock");
+        rock.adicionarMusica(m1);
+        rock.adicionarMusica(m2);
+        rock.adicionarMusica(m3);
 
-        minhaPlaylist.adicionarMusica(musica1);
-        minhaPlaylist.adicionarMusica(musica2);
-        minhaPlaylist.adicionarMusica(musica3);
+        rock.ordenarPorArtista();
+        rock.exibirPlaylist();
 
-        minhaPlaylist.adicionarMusica(musica1);
-
-        minhaPlaylist.exibirPlaylist();
-
-        minhaPlaylist.removerMusica("Here Comes The Sun");
-
-        minhaPlaylist.exibirPlaylist();
+        manager.salvarPlaylist(rock);
     }
 }

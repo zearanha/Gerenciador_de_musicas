@@ -1,9 +1,11 @@
-public class Musica {
-    private String titulo;
-    private Artista artista;
-    private Album album;
-    private String genero;
-    private int anoLancamento;
+import java.io.Serializable;
+
+public class Musica implements Serializable, Comparable<Musica> {
+    private final String titulo;
+    private final Artista artista;
+    private final Album album;
+    private final String genero;
+    private final int anoLancamento;
     private double duracao;
 
     public Musica(String titulo, Artista artista, Album album, String genero, int anoLancamento, double duracao) {
@@ -15,64 +17,41 @@ public class Musica {
         this.duracao = duracao;
     }
 
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
+    public Musica(Album album, int anoLancamento, Artista artista, double duracao, String genero, String titulo) {
+        this.album = album;
+        this.anoLancamento = anoLancamento;
+        this.artista = artista;
+        this.duracao = duracao;
+        this.genero = genero;
         this.titulo = titulo;
     }
 
-    public Artista getArtista() {
-        return artista;
-    }
-
-    public void setArtista(Artista artista) {
-        this.artista = artista;
-    }
-
-    public Album getAlbum() {
-        return album;
-    }
-
-    public void setAlbum(Album album) {
+    public Musica(Album album, int anoLancamento, Artista artista, String genero, String titulo) {
         this.album = album;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
+        this.anoLancamento = anoLancamento;
+        this.artista = artista;
         this.genero = genero;
+        this.titulo = titulo;
     }
 
-    public int getAnoLancamento() {
-        return anoLancamento;
-    }
-
-    public void setAnoLancamento(int anoLancameto) {
-        this.anoLancamento = anoLancameto;
-    }
-
-    public double getDuracao() {
-        return duracao;
-    }
-
-    public void setDuracao(double duracao) {
-        this.duracao = duracao;
-    }
-
+    public String getTitulo() { return titulo; }
+    public Artista getArtista() { return artista; }
+    public Album getAlbum() { return album; }
+    public String getGenero() { return genero; }
+    public int getAnoLancamento() { return anoLancamento; }
+    public double getDuracao() { return duracao; }
 
     public void informacoes(){
-        System.out.println("Título: " + this.getTitulo());
-        System.out.println("Artista: " + this.getArtista().getNome());
-        System.out.println("Álbum: " + this.getAlbum().getNome());
-        System.out.println("Gênero: " + this.getGenero());
-        System.out.println("Ano de Lancamento: " + this.getAnoLancamento());
-        System.out.println("Duração: " + this.getDuracao() + "minutos");
+        System.out.println("Título: " + titulo);
+        System.out.println("Artista: " + artista.getNome());
+        System.out.println("Álbum: " + album.getNome());
+        System.out.println("Gênero: " + genero);
+        System.out.println("Ano de Lançamento: " + anoLancamento);
+        System.out.println("Duração: " + duracao + " minutos\n");
+    }
+
+    @Override
+    public int compareTo(Musica outra) {
+        return this.titulo.compareToIgnoreCase(outra.titulo);
     }
 }
-
-
